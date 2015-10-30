@@ -1,11 +1,9 @@
-package zadania;
-
 import java.util.Arrays;
 
 class Film {
 	
 	private final int index;
-	private final int pocz¹tek, koniec;
+	private final int poczÄ…tek, koniec;
 	
 	public int getIndex() {
 		return index + 1;
@@ -13,13 +11,13 @@ class Film {
 	
 	public Film(int index, String film) {
 		String data[] = film.split(",");
-		pocz¹tek = Integer.parseInt(data[0]);
+		poczÄ…tek = Integer.parseInt(data[0]);
 		koniec = Integer.parseInt(data[1].trim());
 		this.index = index;
 	}
 	
-	public int getPocz¹tek() {
-		return pocz¹tek;
+	public int getPoczÄ…tek() {
+		return poczÄ…tek;
 	}
 	
 	public int getKoniec() {
@@ -28,7 +26,7 @@ class Film {
 	
 	@Override
 	public String toString() {
-		return "[" + pocz¹tek + ", " + koniec + "]";
+		return "[" + poczÄ…tek + ", " + koniec + "]";
 	}
 }
 
@@ -37,15 +35,15 @@ public class Filmy {
 	private final Film[] filmy;
 	
 	public Filmy(String[] filmy) {
-		// alokujemy pamiêæ
+		// alokujemy pamiÄ™Ä‡
 		this.filmy = new Film[filmy.length];
-		// tworzymy bazê filmów na podstawie danych wejœciowych
+		// tworzymy bazÄ™ filmÃ³w na podstawie danych wejÅ›ciowych
 		for (int i = 0; i < filmy.length; i++)
 			this.filmy[i] = new Film(i, filmy[i]);
 	}
 	
 	/**
-	 * Metoda zwracaj¹ca rzeczywist¹ iloœæ filmów w tablicy
+	 * Metoda zwracajÄ…ca rzeczywistÄ… iloÅ›Ä‡ filmÃ³w w tablicy
 	 * @param filmy
 	 * @return
 	 */
@@ -58,20 +56,20 @@ public class Filmy {
 	}
 	
 	/**
-	 * Metoda sprawdzaj¹ca czy drugi film mo¿e byæ obejrzany przez widza
+	 * Metoda sprawdzajÄ…ca czy drugi film moÅ¼e byÄ‡ obejrzany przez widza
 	 * @param f1
 	 * @param f2
 	 * @return
 	 */
-	private boolean sprawdŸ(Film f1, Film f2) {
-		if (f1.getKoniec() <= f2.getPocz¹tek())
+	private boolean sprawdÅº(Film f1, Film f2) {
+		if (f1.getKoniec() <= f2.getPoczÄ…tek())
 			return true;
 		else
 			return false;
 	}
 	
 	/**
-	 * Metoda wypisuj¹ca wartoœci tablicy
+	 * Metoda wypisujÄ…ca wartoÅ›ci tablicy
 	 * @param tab
 	 */
 	private void wypisz(Film[] tab) {
@@ -83,7 +81,7 @@ public class Filmy {
 			else
 				break;
 			if (counter < tab.length - 1)
-				// jeœli nastêpny element nie jest pusty
+				// jeÅ›li nastÄ™pny element nie jest pusty
 				if (tab[counter + 1] != null)
 					System.out.print(", ");
 			counter++;
@@ -92,40 +90,40 @@ public class Filmy {
 	}
 	
 	/**
-	 * Metoda rozwi¹zuj¹ca zadanie za pomoc¹ algorytmu zach³annego
+	 * Metoda rozwiÄ…zujÄ…ca zadanie za pomocÄ… algorytmu zachÅ‚annego
 	 */
 	public void wykonaj() {
 		
-		System.out.println("Dane wejœciowe:");
-		System.out.println("\tZbiór filmów = " + Arrays.toString(filmy));
+		System.out.println("Dane wejÅ›ciowe:");
+		System.out.println("\tZbiÃ³r filmÃ³w = " + Arrays.toString(filmy));
 		
 		Film[] wynik = new Film[filmy.length];
 
-		// zmienna na której bêdzie zapisywana d³ugoœæ tablicy wynikowej
+		// zmienna na ktÃ³rej bÄ™dzie zapisywana dÅ‚ugoÅ›Ä‡ tablicy wynikowej
 		int length = 0;
 		
-		// wyznaczamy tyle kombinacji ile jest filmów w zbiorze
+		// wyznaczamy tyle kombinacji ile jest filmÃ³w w zbiorze
 		for (int i = 0; i < filmy.length; i++) {
 			
-			// obliczamy d³ugoœæ tablicy wynikowej
+			// obliczamy dÅ‚ugoÅ›Ä‡ tablicy wynikowej
 			length = getLength(wynik);
 			
 			Film[] kombinacja = new Film[filmy.length];
 			kombinacja[0] = filmy[i];
 			
-			// zmienna na której bêdzie zapisywana d³ugoœæ tablicy wyznaczaj¹cej bie¿¹c¹ kombinacje
+			// zmienna na ktÃ³rej bÄ™dzie zapisywana dÅ‚ugoÅ›Ä‡ tablicy wyznaczajÄ…cej bieÅ¼Ä…cÄ… kombinacje
 			int len = 1;
 			
-			// przeszukujemy zbiór
+			// przeszukujemy zbiÃ³r
 			for (Film f2 : filmy) {
 				len = getLength(kombinacja);
 				Film f1 = kombinacja[len-1];
-				// jeœli widz mo¿e obejrzeæ drugi film i nie jest to ten sam film
-				if (sprawdŸ(f1, f2) && f1 != f2)
+				// jeÅ›li widz moÅ¼e obejrzeÄ‡ drugi film i nie jest to ten sam film
+				if (sprawdÅº(f1, f2) && f1 != f2)
 					kombinacja[len] = f2;
 			}
 			
-			// jeœli widz mo¿e obejrzeæ wiêcej filmów zapisujemy obecn¹ kombinacje na tablicy wynikowej
+			// jeÅ›li widz moÅ¼e obejrzeÄ‡ wiÄ™cej filmÃ³w zapisujemy obecnÄ… kombinacje na tablicy wynikowej
 			if (len > length)
 				wynik = kombinacja;
 		}
