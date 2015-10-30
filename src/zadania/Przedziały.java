@@ -1,19 +1,17 @@
-package zadania;
-
 import java.util.Arrays;
 
-class Przedzia³ {
+class PrzedziaÅ‚ {
 	
-	private final int pocz¹tek, koniec;
+	private final int poczÄ…tek, koniec;
 	
-	public Przedzia³(String przedzia³) {
-		String data[] = przedzia³.split(",");
-		pocz¹tek = Integer.parseInt(data[0]);
+	public PrzedziaÅ‚(String przedziaÅ‚) {
+		String data[] = przedziaÅ‚.split(",");
+		poczÄ…tek = Integer.parseInt(data[0]);
 		koniec = Integer.parseInt(data[1]);
 	}
 	
-	public int getPocz¹tek() {
-		return pocz¹tek;
+	public int getPoczÄ…tek() {
+		return poczÄ…tek;
 	}
 	
 	public int getKoniec() {
@@ -22,18 +20,18 @@ class Przedzia³ {
 	
 	@Override
 	public String toString() {
-		return pocz¹tek + "," + koniec;
+		return poczÄ…tek + "," + koniec;
 		
 	}
 }
 
-public class Przedzia³y {
+public class PrzedziaÅ‚y {
 	
 	private final double liczba;
-	private final Przedzia³[] przedzia³y;
+	private final PrzedziaÅ‚[] przedziaÅ‚y;
 	
-	public Przedzia³[] getPrzedzia³y() {
-		return przedzia³y;
+	public PrzedziaÅ‚[] getPrzedziaÅ‚y() {
+		return przedziaÅ‚y;
 	}
 	
 	public double getLiczba() {
@@ -41,80 +39,80 @@ public class Przedzia³y {
 	}
 	
 	/**
-	 * Konstruktor przyjmuj¹cy dane wejœciowe zadania
-	 * @param przedzia³y
+	 * Konstruktor przyjmujÄ…cy dane wejÅ›ciowe zadania
+	 * @param przedziaÅ‚y
 	 * @param liczba
 	 */
-	public Przedzia³y(String[] przedzia³y, double liczba) {
-		// alokujemy pamiêæ
-		this.przedzia³y = new Przedzia³[przedzia³y.length];
-		// tworzymy przedzia³y na podstawie danych wejœciowych
-		for (int i = 0; i < przedzia³y.length; i++)
-			this.przedzia³y[i] = new Przedzia³(przedzia³y[i]);
+	public PrzedziaÅ‚y(String[] przedziaÅ‚y, double liczba) {
+		// alokujemy pamiÄ™Ä‡
+		this.przedziaÅ‚y = new PrzedziaÅ‚[przedziaÅ‚y.length];
+		// tworzymy przedziaÅ‚y na podstawie danych wejÅ›ciowych
+		for (int i = 0; i < przedziaÅ‚y.length; i++)
+			this.przedziaÅ‚y[i] = new PrzedziaÅ‚(przedziaÅ‚y[i]);
 		this.liczba = liczba;
 	}
 	
-	private int sprawdŸ(int index) {
-		Przedzia³ p = przedzia³y[index];
+	private int sprawdÅº(int index) {
+		PrzedziaÅ‚ p = przedziaÅ‚y[index];
 		
-//		System.err.println("Sprawdzana komórka: " + index);
+//		System.err.println("Sprawdzana komÃ³rka: " + index);
 //		System.err.println("Liczba: " + liczba);
-//		System.err.println("Bie¿¹cy przedzia³: " + p.toString());
+//		System.err.println("BieÅ¼Ä…cy przedziaÅ‚: " + p.toString());
 		
-		// jeœli warunek spe³niony
-		if (liczba >= p.getPocz¹tek() && liczba <= p.getKoniec())
+		// jeÅ›li warunek speÅ‚niony
+		if (liczba >= p.getPoczÄ…tek() && liczba <= p.getKoniec())
 			return index;
-		// jeœli liczba jest mniejsza od wartoœci pocz¹tkowej przedzia³u
-		else if (liczba < p.getPocz¹tek())
+		// jeÅ›li liczba jest mniejsza od wartoÅ›ci poczÄ…tkowej przedziaÅ‚u
+		else if (liczba < p.getPoczÄ…tek())
 			return -1;
-		// jeœli liczba jest wiêksza od wartoœci koñcowej przedzia³u
+		// jeÅ›li liczba jest wiÄ™ksza od wartoÅ›ci koÅ„cowej przedziaÅ‚u
 		else if (liczba > p.getKoniec())
 			return -2;
-		// jeœli przedzia³ nie spe³nia ¿adnych warunków
+		// jeÅ›li przedziaÅ‚ nie speÅ‚nia Å¼adnych warunkÃ³w
 		else
 			return -3;
 	}
 	
 	private int dziel(int startIndex, int endIndex) {
 		
-		// iloœæ elementów w tablicy
+		// iloÅ›Ä‡ elementÃ³w w tablicy
 		int length = endIndex - startIndex;
 		
-//		System.err.println("Pocz¹tek tablicy: " + startIndex);
+//		System.err.println("PoczÄ…tek tablicy: " + startIndex);
 //		System.err.println("Koniec tablicy: " + endIndex);
 
-		int œr = (startIndex + endIndex) / 2;
+		int Å›r = (startIndex + endIndex) / 2;
 		
-		int wynik = sprawdŸ(œr);
+		int wynik = sprawdÅº(Å›r);
 		
-//		System.err.println("Wynik dla bie¿¹cego elementu: " + wynik);
+//		System.err.println("Wynik dla bieÅ¼Ä…cego elementu: " + wynik);
 		
-		// jeœli tablica posiada wiêcej elementów do sprawdzenia ni¿ 1
+		// jeÅ›li tablica posiada wiÄ™cej elementÃ³w do sprawdzenia niÅ¼ 1
 		if (length > 1) {
-			// jeœli liczba jest mniejsza od wartoœci pocz¹tkowej przedzia³u
+			// jeÅ›li liczba jest mniejsza od wartoÅ›ci poczÄ…tkowej przedziaÅ‚u
 			if (wynik == -1)
-				return dziel(startIndex, œr);
-			// jeœli liczba jest wiêksza od wartoœci koñcowej przedzia³u
+				return dziel(startIndex, Å›r);
+			// jeÅ›li liczba jest wiÄ™ksza od wartoÅ›ci koÅ„cowej przedziaÅ‚u
 			else if (wynik == -2)
-				return dziel(œr, endIndex);
+				return dziel(Å›r, endIndex);
 		}
 		
-		// jeœli nie uda³o siê znaleŸæ przedzia³u
+		// jeÅ›li nie udaÅ‚o siÄ™ znaleÅºÄ‡ przedziaÅ‚u
 		if (wynik < 0)
 			return -1;
 		
-		// ++ bo wynik jest indeksem elementu w tablicy pod którym znaleziono przedzia³
+		// ++ bo wynik jest indeksem elementu w tablicy pod ktÃ³rym znaleziono przedziaÅ‚
 		return ++wynik;
 	}
 	
 	/**
-	 * Metoda wykonuj¹ca zadanie strategi¹ "Dziel i zwyciê¿aj"
+	 * Metoda wykonujÄ…ca zadanie strategiÄ… "Dziel i zwyciÄ™Å¼aj"
 	 */
 	public void wykonaj() {
-		System.out.println("Dane wejœciowe:");
+		System.out.println("Dane wejÅ›ciowe:");
 		System.out.println("\tLiczba = " + liczba);
-		System.out.println("\tPrzedzia³y = " + Arrays.toString(przedzia³y));
-		System.out.println("Wynik: " + dziel(0, przedzia³y.length));
+		System.out.println("\tPrzedziaÅ‚y = " + Arrays.toString(przedziaÅ‚y));
+		System.out.println("Wynik: " + dziel(0, przedziaÅ‚y.length));
 	}
 
 }
