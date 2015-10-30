@@ -1,31 +1,29 @@
-package zadania;
-
-public class Podci¹gi {
+public class PodciÄ…gi {
 	
 	private final char[] s1, s2;
 	private final int m, n;
 	
 	/**
-	 * Konstruktor przyjmuj¹cy dane wejœciowe zadania z mo¿liwoœci¹ w³¹czenia/wy³¹czenia debugowania
+	 * Konstruktor przyjmujÄ…cy dane wejÅ›ciowe zadania z moÅ¼liwoÅ›ciÄ… wÅ‚Ä…czenia/wyÅ‚Ä…czenia debugowania
 	 * @param s1
 	 * @param s2
 	 * @param DEBUG
 	 */
-	public Podci¹gi(String s1, String s2) {
-		// konwertujemy na tablice znaków
+	public PodciÄ…gi(String s1, String s2) {
+		// konwertujemy na tablice znakÃ³w
 		this.s1 = s1.toCharArray();
 		this.s2 = s2.toCharArray();
-		// wyznaczamy d³ugoœci ci¹gów
+		// wyznaczamy dÅ‚ugoÅ›ci ciÄ…gÃ³w
 		m = s1.length();
 		n = s2.length();
 	}
 	
 	/**
-	 * Metoda wykonuj¹ca zadanie w oparciu o programowanie dynamiczne
+	 * Metoda wykonujÄ…ca zadanie w oparciu o programowanie dynamiczne
 	 */
 	public void wykonaj() {
 		
-		System.out.println("Dane wejœciowe:");
+		System.out.println("Dane wejÅ›ciowe:");
 		System.out.println("\tA = " + new String(s1));
 		System.out.println("\tB = " + new String(s2));
 		
@@ -41,10 +39,10 @@ public class Podci¹gi {
 		int i = m - 1;
 		int j = n - 1;
 		
-		// bufor na którym bêdziemy zapisywaæ wspólne znaki
+		// bufor na ktÃ³rym bÄ™dziemy zapisywaÄ‡ wspÃ³lne znaki
 		StringBuffer buffer = new StringBuffer();
 		
-		// szukamy wspólnych znaków iteruj¹c po odpowiednich komórkach tablic
+		// szukamy wspÃ³lnych znakÃ³w iterujÄ…c po odpowiednich komÃ³rkach tablic
 		 while((i >= 0) && (j >= 0)) {
 			 if (s1[i] == s2[j]) {
 				 buffer.append(s1[i]);
@@ -55,11 +53,11 @@ public class Podci¹gi {
 			 else i--;
 		 }
 		 
-		 // odwracamy zapisany na buforze ci¹g znaków, gdy¿ iterowaliœmy od koñca do pocz¹tku
+		 // odwracamy zapisany na buforze ciÄ…g znakÃ³w, gdyÅ¼ iterowaliÅ›my od koÅ„ca do poczÄ…tku
 		 buffer.reverse();
 		 
-		 System.out.println("Maksymalna d³ugoœæ podci¹gu: " + L[m][n]);
-		 System.out.println("Podci¹g: " + buffer.toString());
+		 System.out.println("Maksymalna dÅ‚ugoÅ›Ä‡ podciÄ…gu: " + L[m][n]);
+		 System.out.println("PodciÄ…g: " + buffer.toString());
 	}
 	
 }
