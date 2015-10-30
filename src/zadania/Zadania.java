@@ -1,5 +1,3 @@
-package zadania;
-
 public class Zadania {
 	
 	private static enum zadania {
@@ -7,38 +5,38 @@ public class Zadania {
 	}
 	
 	/**
-	 * Metoda statyczna uruchamiajπca rozwiπzanie dla przekazanego przez parametr zadania
+	 * Metoda statyczna uruchamiajƒÖca rozwiƒÖzanie dla przekazanego przez parametr zadania
 	 * @param zadanie
 	 */
 	private static void uruchom(zadania zadanie) {
-		// wyúwietlamy informacjÍ ktÛre zadanie jest wykonywane
+		// wy≈õwietlamy informacjƒô kt√≥re zadanie jest wykonywane
 		System.out.println("---" + zadanie + "---");
 		
 		// sprawdzamy przekazany parametr
 		switch (zadanie) {
 			case ZADANIE2:
 				{
-					// dane wejúciowe dla zadania 2
-					String[] przedzia≥y = { "10,14", "16,22", "30,60", "70,90", "95,105", "110,116", "130,140", "160,210", "220,240" };
-					// String[] przedzia≥y = { "10,14", "16,22", "30,60", "110,116", "130,140" };
+					// dane wej≈õciowe dla zadania 2
+					String[] przedzia≈Çy = { "10,14", "16,22", "30,60", "70,90", "95,105", "110,116", "130,140", "160,210", "220,240" };
+					// String[] przedzia≈Çy = { "10,14", "16,22", "30,60", "110,116", "130,140" };
 					
-					new Przedzia≥y(przedzia≥y, 160.8).wykonaj(); // szukamy przedzia≥u dla liczby
-					new Przedzia≥y(przedzia≥y, 30.3).wykonaj(); // jw.
-					new Przedzia≥y(przedzia≥y, 64.9).wykonaj();
-					new Przedzia≥y(przedzia≥y, -10.2).wykonaj();
-					new Przedzia≥y(przedzia≥y, 18.5).wykonaj();
-					new Przedzia≥y(przedzia≥y, 341.1).wykonaj();
+					new Przedzia≈Çy(przedzia≈Çy, 160.8).wykonaj(); // szukamy przedzia≈Çu dla liczby
+					new Przedzia≈Çy(przedzia≈Çy, 30.3).wykonaj(); // jw.
+					new Przedzia≈Çy(przedzia≈Çy, 64.9).wykonaj();
+					new Przedzia≈Çy(przedzia≈Çy, -10.2).wykonaj();
+					new Przedzia≈Çy(przedzia≈Çy, 18.5).wykonaj();
+					new Przedzia≈Çy(przedzia≈Çy, 341.1).wykonaj();
 				}
 			break;
 			case ZADANIE5:
 				{
-					// dane wejúciowe dla zadania 3
+					// dane wej≈õciowe dla zadania 3
 					String s1 = "Politechnika";
 					String s2 = "toaleta";
 					
-					new Podciπgi(s1, s2).wykonaj();
-					new Podciπgi("mas≥o", "s≥oma").wykonaj();
-					new Podciπgi("petarda", "gepard").wykonaj();
+					new PodciƒÖgi(s1, s2).wykonaj();
+					new PodciƒÖgi("mas≈Ço", "s≈Çoma").wykonaj();
+					new PodciƒÖgi("petarda", "gepard").wykonaj();
 				}
 			break;
 			case ZADANIE6:
